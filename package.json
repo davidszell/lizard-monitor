@@ -1,10 +1,13 @@
 {
   "name": "lizard-monitor",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Lightweight web dashboard to monitor system resources.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "build": "webpack",
+    "build:prod": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,32 @@
   "bugs": {
     "url": "https://github.com/davidszell/lizard-monitor/issues"
   },
-  "homepage": "https://github.com/davidszell/lizard-monitor#readme"
+  "homepage": "https://github.com/davidszell/lizard-monitor#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "preact": "^10.5.13",
+    "pug": "^3.0.2",
+    "socket.io": "^4.0.0",
+    "socket.io-client": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.13.12",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "source-map-loader": "^2.0.1",
+    "terser-webpack-plugin": "^5.1.1",
+    "webpack": "^5.28.0",
+    "webpack-cli": "^4.6.0"
+  },
+  "plugins": [
+    [
+      "@babel/plugin-transform-react-jsx",
+      {
+        "pragma": "h",
+        "pragmaFrag": "Fragment"
+      }
+    ]
+  ]
 }
