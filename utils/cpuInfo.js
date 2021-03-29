@@ -31,7 +31,7 @@ const broadcast = (interval, callback) => {
             cpuLoads[i].total = total;
             cpuLoads[i].load = load;
 
-            data.push({cpu: i, model: cpu.model, loadPercent: loadPercent})
+            data.push({cpu: i, model: cpu.model, loadPercent: loadPercent});
         }
 
         callback(data);
