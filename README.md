@@ -1,7 +1,8 @@
 # Lizard Monitor
 <p align="center">
-    <img alt="GitHub" src="https://img.shields.io/github/license/davidszell/lizard-monitor">
-    <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/davidszell/lizard-monitor">
+    <img alt="License" src="https://img.shields.io/github/license/davidszell/lizard-monitor">
+    <img alt="Version" src="https://img.shields.io/github/package-json/v/davidszell/lizard-monitor">
+    <img alt="Build status" src="https://travis-ci.com/davidszell/lizard-monitor.svg?branch=main">
 </p>
 
 Lightweight web dashboard to monitor system resources.
