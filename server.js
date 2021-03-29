@@ -1,4 +1,5 @@
 const express = require('express');
+var RateLimit = require('express-rate-limit');
 const http = require('http');
 
 const cpuInfo = require('./utils/cpuInfo');
@@ -10,6 +11,12 @@ const app = express();
 app.set('views', './views');
 app.set('view engine', 'pug');
 
+var limiter = new RateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100
+});
+
+app.use(limiter);
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
