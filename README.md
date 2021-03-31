@@ -1,6 +1,6 @@
 # Lizard Monitor
 
-[![Version](https://img.shields.io/badge/version-1.1-green)](https://github.com/davidszell/lizard-monitor/releases/latest)
+[![Version](https://img.shields.io/github/package-json/v/davidszell/lizard-monitor)](https://github.com/davidszell/lizard-monitor/releases/latest)
 [![License](https://img.shields.io/github/license/davidszell/lizard-monitor)](https://github.com/davidszell/lizard-monitor/blob/main/LICENSE)
 [![Codacy Badge](https://img.shields.io/codacy/grade/bf2d9330fa0d47b69f24eac7160163d0)](https://www.codacy.com/gh/davidszell/lizard-monitor/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=davidszell/lizard-monitor&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://img.shields.io/travis/com/davidszell/lizard-monitor)](https://travis-ci.com/github/davidszell/lizard-monitor)
