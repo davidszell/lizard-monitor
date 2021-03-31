@@ -2,7 +2,7 @@ import React from 'react';
 import { render, useEffect, useState} from 'react-dom';
 import io from 'socket.io-client';
 
-function Dashboard(props) {
+function Dashboard() {
 	const socket = io();
 
 	let [cpus, setCpus] = useState([]);
@@ -16,9 +16,9 @@ function Dashboard(props) {
 
 	return (
 		<React.Fragment>
-			{cpus.map(cpu => (
-				<div>
-					<span>CPU #{cpu.cpu + 1} - </span>
+			{cpus.map((cpu, i) => (
+				<div key={i}>
+					<span>CPU #{i + 1} - </span>
 					<progress value={cpu.loadPercent} max="100"> {cpu.loadPercent}% </progress>
 					<span> ({cpu.loadPercent}%)</span>
 				</div>
@@ -28,5 +28,5 @@ function Dashboard(props) {
 	);
 }
   
-const App = <Dashboard name="World" />;
+const App = <Dashboard />;
 render(App, document.getElementById('app'));  
