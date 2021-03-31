@@ -9,7 +9,7 @@
     "build": "npm run styles && webpack",
     "build:prod": "npm run styles && webpack -p",
     "styles": "postcss ./src/tailwind.css -o ./public/css/app.css",
-    "lint": "eslint **/*.js"
+    "lint": "eslint ./"
   },
   "repository": {
     "type": "git",
