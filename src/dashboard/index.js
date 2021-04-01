@@ -12,7 +12,6 @@ function Dashboard() {
 	useEffect(() => {
 		socket.on('cpuInfo', (data) => {
 			setCpuData(data);
-            console.log(JSON.stringify(data));
         });
 	}, []);
 
