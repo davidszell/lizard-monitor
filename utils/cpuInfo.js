@@ -1,36 +1,39 @@
 const os = require('os');
 
-let cpuLoads = [];
+let loads = [];
 
 const broadcast = (interval, callback) => {
-    let cpus = os.cpus();
+    let cpuDataList = os.cpus();
 
-    cpus.map((cpu) => {
-        const total = cpu.times.user + cpu.times.idle + cpu.times.sys + cpu.times.irq;
-        const load = total - cpu.times.idle;
-        cpuLoads.push({total, load})
+    cpuDataList.map((cpuData) => {
+        const total = cpuData.times.user + cpuData.times.idle + cpuData.times.sys + cpuData.times.irq;
+        const load = total - cpuData.times.idle;
+        loads.push({total, load})
     });
 
     setInterval(() => {
-        cpus = os.cpus();
-        let data = [];
+        cpuDataList = os.cpus();
+        let coreData = [];
+        let totalLoadPercent = 0;
 
-        cpus.map((cpu, i) => {
+        cpuDataList.map((cpu, i) => {
             const total = cpu.times.user + cpu.times.idle + cpu.times.sys + cpu.times.irq;
             const load = total - cpu.times.idle;
 
-            const diffTotal = total - cpuLoads[parseInt(i)].total;
-            const diffLoad = load - cpuLoads[parseInt(i)].load;
+            const diffTotal = total - loads[parseInt(i)].total;
+            const diffLoad = load - loads[parseInt(i)].load;
 
-            const loadPercent = (diffLoad / diffTotal * 100).toFixed(1);
+            const loadPercent = (diffLoad / diffTotal * 100);
+            totalLoadPercent += loadPercent;
 
-            cpuLoads[parseInt(i)].total = total;
-            cpuLoads[parseInt(i)].load = load;
+            loads[parseInt(i)] = {total, load};
 
-            data.push({cpu: i, model: cpu.model, loadPercent: loadPercent});
+            coreData.push({cpu: i, model: cpu.model, loadPercent: loadPercent.toFixed(1)});
         });
 
-        callback(data);
+        const avgLoad = (coreData.length > 0 ? totalLoadPercent / coreData.length : 0).toFixed(1); 
+
+        callback({avgLoad, coreData});
     }, interval);
 }
 

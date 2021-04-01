@@ -5,6 +5,7 @@ module.exports = {
             './src/**/*.js',
         ],
     },
+    darkMode: 'media',
     theme: {},
     variants: {},
     plugins: [],
