@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 
 import CpuData from '../dataTypes/cpuData';
 
-function CpuInfo({key, cpuData}) {
+function CpuInfo({cpuData}) {
 	return (
-		<div key={key}>
-			<span>CPU #{cpuData.cpu} - </span>
-			<progress value={cpuData.loadPercent} max="100"> {cpuData.loadPercent}% </progress>
-			<span> ({cpuData.loadPercent}%)</span>
-		</div>
+        <div className="flex items-center pb-2 mb-2 text-sm sm:space-x-12 justify-between border-b border-gray-200">
+            <div>
+                <span>CPU #{cpuData.cpu}</span>
+                <span className="text-xs text-gray-400 px-4">{cpuData.model}</span>
+            </div>
+            <p className="text-xs" ></p>
+            <div className="flex items-end">{cpuData.loadPercent}%</div>
+        </div>
 	);
 }
 

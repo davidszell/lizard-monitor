@@ -1,6 +1,6 @@
 {
   "name": "lizard-monitor",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Lightweight web dashboard to monitor system resources.",
   "main": "index.js",
   "scripts": {
@@ -42,6 +42,7 @@
     "eslint-plugin-react": "^7.23.1",
     "eslint-plugin-security": "^1.4.0",
     "postcss-cli": "^8.3.1",
+    "prop-types": "^15.7.2",
     "source-map-loader": "^2.0.1",
     "tailwindcss": "^2.0.4",
     "terser-webpack-plugin": "^5.1.1",

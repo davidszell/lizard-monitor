@@ -34,5 +34,6 @@ httpServer.listen(PORT, '0.0.0.0', () => console.log('Server listening at port '
 socketServer.attach(httpServer);
 
 cpuInfo.broadcast(5000, (data) => {
-    socketServer.broadcastInfo(data);
+    socketServer.broadcastInfo('cpuInfo', data);
+    console.log(JSON.stringify(data));
 });

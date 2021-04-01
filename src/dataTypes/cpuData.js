@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
+import CoreData from './coreData';
 
 const CpuData = PropTypes.shape({
-    cpu : PropTypes.number.isRequired,
-    model : PropTypes.string.isRequired,
-    loadPercent : PropTypes.number.isRequired
+    avgLoad : PropTypes.number.isRequired,
+    coreData : PropTypes.arrayOf(CoreData).isRequired
 });
 
 export default CpuData;

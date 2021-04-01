@@ -6,9 +6,9 @@ const attach = (server) => {
     io = socketIo(server);
 }
 
-const broadcastInfo = (info) => {
+const broadcastInfo = (type, data) => {
     if (io) {
-        io.emit('info', info);
+        io.emit(type, data);
     }
 }
 
