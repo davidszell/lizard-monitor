@@ -10,7 +10,6 @@ function CpuInfo({cpuData}) {
                 <span>CPU #{cpuData.cpu}</span>
                 <span className="text-xs text-gray-400 px-4">{cpuData.model}</span>
             </div>
-            <p className="text-xs" ></p>
             <div className="flex items-end">{cpuData.loadPercent}%</div>
         </div>
 	);
