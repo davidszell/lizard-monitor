@@ -1,6 +1,6 @@
 {
   "name": "lizard-monitor",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Lightweight web dashboard to monitor system resources.",
   "main": "index.js",
   "scripts": {
