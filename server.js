@@ -35,5 +35,4 @@ socketServer.attach(httpServer);
 
 cpuInfo.broadcast(5000, (data) => {
     socketServer.broadcastInfo('cpuInfo', data);
-    console.log(JSON.stringify(data));
 });
