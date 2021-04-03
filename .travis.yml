@@ -6,7 +6,7 @@ jobs:
   include:
     - stage: "ESLint"
       script: npm run lint
-    - stage: "Test dev build"
+    - stage: "Test build"
       script: npm run build:prod
     - stage: "Deploy"
       script: skip
