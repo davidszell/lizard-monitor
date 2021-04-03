@@ -16,11 +16,14 @@ You need Node.js installed on your machine. You can download it [here](https://n
 __Step 1__
 
 ```sh
-## download the pre-built archive
-curl -LOk https://github.com/davidszell/lizard-monitor/archive/main.zip && unzip main.zip
+## create a directory for the application
+mkdir lizard-monitor
 
-## navigate to downloaded & unpacked dir
-cd lizard-monitor-main
+## navigate to the created directory
+cd lizard-monitor
+
+## download and unpack the pre-built archive
+curl -LOk https://github.com/davidszell/lizard-monitor/releases/latest/download/pre-built.tar.gz && tar -xzf pre-built.tar.gz
 
 ```
 
