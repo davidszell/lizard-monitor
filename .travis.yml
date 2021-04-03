@@ -1,5 +1,21 @@
 language: node_js
 node_js: "node"
-script:
-  - npm run lint
-  - npm run build
+os: "linux"
+dist: "xenial"
+jobs:
+  include:
+    - stage: "ESLint"
+      script: npm run lint
+    - stage: "Test dev build"
+      script: npm run build:prod
+    - stage: "Deploy"
+      script: skip
+      before_deploy:
+        - npm run build:prod && npm run package
+      deploy:
+        provider: releases
+        token: $GITHUB_OAUTH_TOKEN
+        file: "pre-built.tar.gz"
+        skip_cleanup: true
+        on:
+          tags: true
