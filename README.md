@@ -11,7 +11,7 @@ Lightweight web dashboard to monitor system resources.
 
 You need Node.js installed on your machine. You can download it [here](https://nodejs.org/en/download/).
 
-### Run pre-built release
+### Run latest pre-built release
 
 __Step 1__
 
@@ -27,7 +27,7 @@ curl -LOk https://github.com/davidszell/lizard-monitor/releases/latest/download/
 
 ```
 
-__Step 3__
+__Step 2__
 
 ```sh
 ## install dependencies
@@ -35,11 +35,11 @@ npm install --production
 
 ```
 
-__Step 4__
+__Step 3__
 
 ```sh
 ## start the application (on default port 3000)
-npm start:prod
+npm run start:prod
 
 ```
 
@@ -65,7 +65,7 @@ cd lizard-monitor-main
 
 ```
 
-__Step 3__
+__Step 2__
 
 ```sh
 ## install dependencies
@@ -76,10 +76,10 @@ npm run build:prod
 
 ```
 
-__Step 4__
+__Step 3__
 
 ```sh
 ## start the application (on default port 3000)
-npm start
+npm run start:prod
 
 ```
