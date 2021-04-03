@@ -1,5 +1,18 @@
 language: node_js
 node_js: "node"
-script:
-  - npm run lint
-  - npm run build
+jobs:
+  include:
+    - stage: "ESLint"
+      script: npm run lint
+    - stage: "Test dev build"
+      script: npm run build
+    - stage: "Deploy"
+      script: npm run build:prod && npm run package
+      deploy:
+        provider: releases
+        api_key: $GITHUB_OAUTH_TOKEN
+        file: "dist.tar.gz"
+        skip_cleanup: true
+        draft: true
+        on:
+          tags: true

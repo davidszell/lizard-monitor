@@ -1,9 +1,7 @@
 const path = require('path');
-const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
 	entry: './src/app.js',
-	mode: 'development',
 	module: {
 		rules: [
             {
@@ -32,10 +30,6 @@ module.exports = {
             'react-dom': 'preact/compat'
 		},
 	},
-	optimization: {
-        minimize: true,
-        minimizer: [new TerserPlugin()],
-      },
 	output: {
 		path: path.resolve(__dirname, 'public/js/'),
 		publicPath: '/js/',
