@@ -1,18 +1,21 @@
 language: node_js
 node_js: "node"
+os: "linux"
+dist: "xenial"
 jobs:
   include:
     - stage: "ESLint"
       script: npm run lint
     - stage: "Test dev build"
-      script: npm run build
+      script: npm run build:prod
     - stage: "Deploy"
-      script: npm run build:prod && npm run package
+      script: skip
+      before_deploy:
+        - npm run build:prod && npm run package
       deploy:
         provider: releases
-        api_key: $GITHUB_OAUTH_TOKEN
-        file: "dist.tar.gz"
+        token: $GITHUB_OAUTH_TOKEN
+        file: "pre-built.tar.gz"
         skip_cleanup: true
-        draft: true
         on:
           tags: true
