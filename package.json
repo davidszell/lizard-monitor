@@ -6,16 +6,12 @@
   "scripts": {
     "start": "nodemon server.js",
     "start:prod": "node server.js",
-
     "build": "npm run prebuild && webpack --config webpack.dev.js",
     "build:prod": "npm run prebuild && webpack --config webpack.prod.js",
-
     "prebuild": "npm run prebuild:clean && npm run prebuild:styles",
     "prebuild:clean": "rm -rf public && mkdir public",
     "prebuild:styles": "postcss ./src/tailwind.css -o ./public/css/app.css",
-
     "package": "./package.sh",
-
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./"
   },
@@ -32,6 +28,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-rate-limit": "^5.2.6",
+    "lizard-utils": "^1.0.2",
     "preact": "^10.5.13",
     "pug": "^3.0.2",
     "socket.io": "^4.0.0",

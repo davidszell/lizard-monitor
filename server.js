@@ -1,9 +1,7 @@
 const express = require('express');
+const lizardUtils = require('lizard-utils');
 var RateLimit = require('express-rate-limit');
 const http = require('http');
-
-const cpuInfo = require('./utils/cpuInfo');
-const memoryInfo = require('./utils/memoryInfo');
 const socketServer = require('./utils/socket');
 
 const PORT = process.env.PORT || 3000;
@@ -34,10 +32,10 @@ const httpServer = http.createServer(app);
 httpServer.listen(PORT, '0.0.0.0', () => console.log('Server listening at port ' + PORT));
 socketServer.attach(httpServer);
 
-cpuInfo.broadcast(5000, (data) => {
+lizardUtils.cpu.subscribe(5000, (data) => {
   socketServer.broadcastInfo('cpuInfo', data);
 });
 
-memoryInfo.broadcast(5000, (data) => {
+lizardUtils.memory.subscribe(5000, (data) => {
   socketServer.broadcastInfo('memoryInfo', data);
 });
