@@ -1,6 +1,6 @@
 {
   "name": "lizard-monitor",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "Lightweight web dashboard to monitor system resources.",
   "main": "index.js",
   "scripts": {
@@ -28,7 +28,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-rate-limit": "^5.2.6",
-    "lizard-utils": "^1.0.2",
+    "lizard-utils": "^1.1.1",
     "preact": "^10.5.13",
     "pug": "^3.0.2",
     "socket.io": "^4.0.0",
