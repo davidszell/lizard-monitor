@@ -13,6 +13,15 @@ function Dashboard() {
 	let [memoryData, setMemoryData] = useState(null);
 	let [systemData, setSystemData] = useState(null);
 	let [hostname, setHostname] = useState(null);
+	let [greeting, setGreeting] = useState(null);
+
+	const updateGreeting = () => {
+		const hours = new Date().getHours();
+		setGreeting(hours < 5 && "evening" ||
+					hours < 12 && "morning" ||
+					hours < 18 && "afternoon" ||
+					"evening");
+	}
 
 	useEffect(() => {
 		socket.on('cpuInfo', (data) => {
@@ -31,12 +40,17 @@ function Dashboard() {
 				(result) => setHostname(result.hostname),
 				() => {setHostname(null)}
 			);
+
+		updateGreeting();
+		setInterval(updateGreeting, 5 * 60 * 1000);
 	}, []);
 
 
 	return (
         <React.Fragment>
-            <h1 className="text-4xl font-semibold text-gray-800 dark:text-white">Good afternoon.</h1>
+            <h1 className="text-4xl font-semibold text-gray-800 dark:text-white">
+				Good {greeting || 'day'}.
+			</h1>
 			{hostname && (
 				<h2 className="text-md text-gray-400">Here&apos;s what&apos;s happening on {hostname}.</h2>
 			)}
