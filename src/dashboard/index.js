@@ -4,12 +4,14 @@ import io from 'socket.io-client';
 
 import CpuModule from '../cpuModule';
 import MemoryModule from '../memoryModule';
+import SystemModule from '../systemModule';
 
 function Dashboard() {
 	const socket = io();
 
 	let [cpuData, setCpuData] = useState(null);
 	let [memoryData, setMemoryData] = useState(null);
+	let [systemData, setSystemData] = useState(null);
 
 	useEffect(() => {
 		socket.on('cpuInfo', (data) => {
@@ -18,6 +20,9 @@ function Dashboard() {
 		socket.on('memoryInfo', (data) => {
 			setMemoryData(data);
         });
+		socket.on('systemInfo', (data) => {
+			setSystemData(data);
+        });
 	}, []);
 
 	return (
@@ -25,6 +30,7 @@ function Dashboard() {
             <h1 className="text-4xl font-semibold text-gray-800 dark:text-white">Good afternoon.</h1>
             <h2 className="text-md text-gray-400">Here&apos;s what&apos;s happening on HOSTNAME.</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
+          		<SystemModule systemData={systemData} />
           		<CpuModule cpuData={cpuData} />
 				<MemoryModule memoryData={memoryData} />
         	</div>
