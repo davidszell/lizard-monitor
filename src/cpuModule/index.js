@@ -10,7 +10,7 @@ function CpuModule({cpuData}) {
                 <div className="shadow-lg rounded-md px-4 py-6 w-full bg-white dark:bg-gray-700 relative">
                     <p className="w-max text-xl text-gray-700 dark:text-white font-semibold border-b border-gray-200">CPU</p>
                     <div className="space-y-2 my-6">
-                        <p className="text-5xl text-black dark:text-white font-bold">{cpuData.avgLoad}%</p>
+                        <p className="text-5xl text-black dark:text-white font-bold">{cpuData.avgLoadPercent}%</p>
                     </div>
                     <div className="dark:text-white">
                         {cpuData.coreData.map((cpuData, i) => (
