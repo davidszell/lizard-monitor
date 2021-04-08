@@ -27,7 +27,7 @@ app.get('/favicon.ico', (req, res) => {
 	res.sendFile(__dirname + '/assets/favicon.ico');
 });
 
-app.get('/api/systemInfo', (req, res) => {
+app.get('/api/system/info', (req, res) => {
 	res.setHeader('Content-Type', 'application/json');
 	lizardUtils.system.info().then((data) => res.send(data));
 });

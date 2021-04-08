@@ -12,6 +12,7 @@ function Dashboard() {
 	let [cpuData, setCpuData] = useState(null);
 	let [memoryData, setMemoryData] = useState(null);
 	let [systemData, setSystemData] = useState(null);
+	let [hostname, setHostname] = useState(null);
 
 	useEffect(() => {
 		socket.on('cpuInfo', (data) => {
@@ -23,12 +24,22 @@ function Dashboard() {
 		socket.on('systemInfo', (data) => {
 			setSystemData(data);
         });
+
+		fetch('/api/system/info')
+			.then((res) => res.json())
+			.then(
+				(result) => setHostname(result.hostname),
+				() => {setHostname(null)}
+			);
 	}, []);
+
 
 	return (
         <React.Fragment>
             <h1 className="text-4xl font-semibold text-gray-800 dark:text-white">Good afternoon.</h1>
-            <h2 className="text-md text-gray-400">Here&apos;s what&apos;s happening on HOSTNAME.</h2>
+			{hostname && (
+				<h2 className="text-md text-gray-400">Here&apos;s what&apos;s happening on {hostname}.</h2>
+			)}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
           		<SystemModule systemData={systemData} />
           		<CpuModule cpuData={cpuData} />
