@@ -2,7 +2,7 @@ import React from 'react';
 
 import MemoryData from '../dataTypes/memoryData';
 
-function CpuModule({memoryData}) {
+function MemoryModule({memoryData}) {
 	return (
         <div className="w-full">
             {memoryData ? (
@@ -39,8 +39,8 @@ function CpuModule({memoryData}) {
 	);
 }
 
-CpuModule.propTypes = {
+MemoryModule.propTypes = {
     memoryData : MemoryData.isRequired
 };
 
-export default CpuModule;
+export default MemoryModule;

@@ -11,8 +11,8 @@ app.set('views', './views');
 app.set('view engine', 'pug');
 
 var limiter = new RateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	max: 100
 });
 
 app.use(limiter);
@@ -27,15 +27,28 @@ app.get('/favicon.ico', (req, res) => {
 	res.sendFile(__dirname + '/assets/favicon.ico');
 });
 
+app.get('/api/system/info', (req, res) => {
+	res.setHeader('Content-Type', 'application/json');
+	lizardUtils.system.info().then((data) => res.send(data));
+});
+
 const httpServer = http.createServer(app);
 
 httpServer.listen(PORT, '0.0.0.0', () => console.log('Server listening at port ' + PORT));
 socketServer.attach(httpServer);
 
 lizardUtils.cpu.subscribe(5000, (data) => {
-  socketServer.broadcastInfo('cpuInfo', data);
+	socketServer.broadcastInfo('cpuInfo', data);
 });
 
 lizardUtils.memory.subscribe(5000, (data) => {
-  socketServer.broadcastInfo('memoryInfo', data);
+	socketServer.broadcastInfo('memoryInfo', data);
+});
+
+lizardUtils.network.subscribe(5000, (data) => {
+	socketServer.broadcastInfo('networkInfo', data);
+}, {internal: false, family: 'IPv4'});
+
+lizardUtils.system.subscribe(5000, (data) => {
+	socketServer.broadcastInfo('systemInfo', data);
 });
