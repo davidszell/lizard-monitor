@@ -45,6 +45,10 @@ lizardUtils.memory.subscribe(5000, (data) => {
 	socketServer.broadcastInfo('memoryInfo', data);
 });
 
+lizardUtils.network.subscribe(5000, (data) => {
+	socketServer.broadcastInfo('networkInfo', data);
+}, {internal: false, family: 'IPv4'});
+
 lizardUtils.system.subscribe(5000, (data) => {
 	socketServer.broadcastInfo('systemInfo', data);
 });

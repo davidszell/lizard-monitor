@@ -4,12 +4,14 @@ import io from 'socket.io-client';
 
 import CpuModule from '../cpuModule';
 import MemoryModule from '../memoryModule';
+import NetworkModule from '../networkModule';
 import SystemModule from '../systemModule';
 
 function Dashboard() {
 	const socket = io();
 
 	let [cpuData, setCpuData] = useState(null);
+	let [networkData, setNetworkData] = useState(null);
 	let [memoryData, setMemoryData] = useState(null);
 	let [systemData, setSystemData] = useState(null);
 	let [hostname, setHostname] = useState(null);
@@ -29,6 +31,9 @@ function Dashboard() {
         });
 		socket.on('memoryInfo', (data) => {
 			setMemoryData(data);
+        });
+		socket.on('networkInfo', (data) => {
+			setNetworkData(data);
         });
 		socket.on('systemInfo', (data) => {
 			setSystemData(data);
@@ -58,6 +63,7 @@ function Dashboard() {
           		<SystemModule systemData={systemData} />
           		<CpuModule cpuData={cpuData} />
 				<MemoryModule memoryData={memoryData} />
+				<NetworkModule networkData={networkData} />
         	</div>
         </React.Fragment>
 	);
