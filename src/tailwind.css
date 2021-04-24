@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.h-68 {
+    height: 17rem
+        /* 272px */
+    ;
+}
+
+.max-h-68 {
+    max-height: 17rem
+        /* 272px */
+    ;
+}
+
+.h-92 {
+    height: 23rem
+        /* 368px */
+    ;
+}
+
+.max-h-92 {
+    max-height: 23rem
+        /* 368px */
+    ;
+}
+
+.h-104 {
+    height: 26rem
+        /* 416px */
+    ;
+}
+
+.max-h-104 {
+    max-height: 26rem
+        /* 416px */
+    ;
+}

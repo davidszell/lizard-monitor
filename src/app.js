@@ -1,17 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import Dashboard from './dashboard';
+import Dashboard from './components/dashboard';
 
 const App = (
-	<main className="bg-gray-100 dark:bg-gray-800 relative h-screen overflow-hidden py-6">
-		<div className="flex items-start justify-between">
-			<div className="flex flex-col w-full md:space-y-4">
-				<div className="overflow-auto h-screen pb-24 px-4 md:px-6">
-					<Dashboard />
-      			</div>
-    		</div>
-  		</div>
-	</main>
+    <main className="h-screen overflow-auto p-6 bg-gray-100 space-y-4">
+        <Dashboard />
+    </main>
 );
-render(App, document.getElementById('app'));  
+render(App, document.getElementById('app'));
