@@ -5,24 +5,24 @@ import PropTypes from 'prop-types';
 import SmallTemplate from '../../templates/smallTemplate';
 import NoneIcon from '../../icons/none';
 
-function AvgLoad({value}) {
+function Info({value}) {
     let [info, setInfo] = useState(null);
 
     useEffect(() => {
 		if (value == undefined || value == null) {
             setInfo(null);
         } else {
-            setInfo({name: 'Avg Load', value: value + '%', icon: (<NoneIcon.Small />)});
+            setInfo({name: 'Used', value: value + '%', icon: (<NoneIcon.Small />)});
         }
     }, [value]);
 
 	return (
-        <SmallTemplate title={'CPU'} info={info} loadingIcon={<NoneIcon.Large />} />
+        <SmallTemplate title={'Memory'} info={info} loadingIcon={<NoneIcon.Large />} />
 	);
 }
 
-AvgLoad.propTypes = {
+Info.propTypes = {
     value : PropTypes.number.isRequired
 };
 
-export default AvgLoad;
+export default Info;

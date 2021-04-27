@@ -1,11 +1,20 @@
 import React from 'react';
 import { useEffect, useState } from 'react-dom';
+import io from 'socket.io-client';
 
 import CpuAvgLoad from '../cpu/avgLoad';
+import CpuCoreInfo from '../cpu/coreInfo';
+import MemoryInfo from '../memory/info';
+import MemoryDetails from '../memory/details';
 
 function Dashboard() {
+	const socket = io();
+
     let [hostname, setHostname] = useState(null);
     let [greeting, setGreeting] = useState(null);
+
+	let [cpuData, setCpuData] = useState(null);
+	let [memoryData, setMemoryData] = useState(null);
 
     const updateGreeting = () => {
         const hours = new Date().getHours();
@@ -16,6 +25,13 @@ function Dashboard() {
     }
 
     useEffect(() => {
+		socket.on('cpuInfo', (data) => {
+			setCpuData(data);
+        });
+		socket.on('memoryInfo', (data) => {
+			setMemoryData(data);
+        });
+
         fetch('/api/system/info')
             .then((res) => res.json())
             .then(
@@ -38,7 +54,12 @@ function Dashboard() {
                 </h2>
             )}
             <div className="grid grid-flow-row-dense grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
-                <CpuAvgLoad avgLoad={'12.3'} />
+                <CpuAvgLoad value={cpuData?.avgLoadPercent} />
+                <CpuCoreInfo value={cpuData?.coreData} compact={true} />
+                <CpuCoreInfo value={cpuData?.coreData} />
+
+                <MemoryInfo value={memoryData?.usedPercent} />
+                <MemoryDetails value={memoryData} />
             </div>
         </React.Fragment>
     );
