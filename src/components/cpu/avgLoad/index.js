@@ -2,22 +2,30 @@ import React from 'react';
 import { useEffect, useState } from 'react-dom';
 import PropTypes from 'prop-types';
 
-import SmallTemplate from '../../templates/smallTemplate';
-import NoneIcon from '../../icons/none';
+import SmallTemplate from '../../../layouts/templates/smallTemplate';
+import CpuIcon from '../../icons/cpu';
 
 function AvgLoad({value}) {
-    let [info, setInfo] = useState(null);
+    let [isLoading, setLoading] = useState(true);
+    let [displayValue, setDisplayValue] = useState(null);
 
     useEffect(() => {
 		if (value == undefined || value == null) {
-            setInfo(null);
+            setLoading(true);
+            setDisplayValue(null);
         } else {
-            setInfo({name: 'Avg Load', value: value + '%', icon: (<NoneIcon.Small />)});
+            setLoading(false);
+            setDisplayValue(value + '%');
         }
     }, [value]);
 
 	return (
-        <SmallTemplate title={'CPU'} info={info} loadingIcon={<NoneIcon.Large />} />
+        <SmallTemplate
+            title={'CPU Load'}
+            value={displayValue}
+            icon={<CpuIcon />}
+            isLoading={isLoading}
+            className="bg-gradient-to-br from-green-300 to-blue-400" />
 	);
 }
 
