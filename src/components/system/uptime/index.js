@@ -25,10 +25,10 @@ function Uptime({value}) {
             hours -= days * 24;
 
             let data = [];
-            data.push(days);
-            data.push(hours);
-            data.push(minutes);
-            data.push(seconds);
+            data.push(days.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}));
+            data.push(hours.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}));
+            data.push(minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}));
+            data.push(seconds.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}));
 
             setDisplayValue(data.join(':'));
         }
