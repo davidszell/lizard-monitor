@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="h-screen overflow-auto bg-gray-200">
+        <header class="bg-blue-400 p-4 text-white text-xl shadow">
+            Lizard Monitor
+        </header>
+        <main class="sm:max-w-xl lg:max-w-4xl xl:max-w-6xl mx-auto px-4 sm:px-0">
+            <div class="space-y-8 py-4">
+                <div id="greeting">
+                    <h1 class="text-3xl font-semibold text-gray-800">
+                        Good day.
+                    </h1>
+                    <h2 class="text-xl text-gray-700">
+                        Here&apos;s what&apos;s happening on localhost.
+                    </h2>
+                </div>
+                <div id="dashboard" class="space-y-4">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                        <!-- Small Info -->
+                        <div class="relative shadow-md rounded-sm overflow-hidden max-h-32 h-32 text-white bg-gradient-to-br from-green-300 to-blue-400">
+                            <div class="absolute -bottom-8 -right-8 opacity-20">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current w-32 h-32" viewBox="0 0 24 24">
+                                    <path fill="none" stroke-width="3"
+                                        d="M6.343 17.657A8 8 0 1017.657 6.343L6.343 17.657A8 8 0 1117.657 6.343" />
+                                </svg>
+                            </div>
+                            <div class="relative">
+                                <div class="flex items-center px-4 h-12">
+                                    <p class="text-sm uppercase font-semibold">
+                                        Title
+                                    </p>
+                                </div>
+                                <div class="flex items-center space-x-4 px-4 h-16 max-h-16">
+                                    <h2 class="text-2xl font-semibold">
+                                        ##.#%
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="relative shadow-md rounded-sm overflow-hidden max-h-32 h-32 text-white animate-pulse bg-gradient-to-br from-gray-300 to-gray-400">
+                            <div class="absolute -bottom-8 -right-8 opacity-20">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current w-32 h-32" viewBox="0 0 24 24">
+                                    <path fill="none" stroke-width="3"
+                                        d="M6.343 17.657A8 8 0 1017.657 6.343L6.343 17.657A8 8 0 1117.657 6.343" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                        <div class="border">Item</div>
+                        <div class="border">Item</div>
+                        <div class="border">Item</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
