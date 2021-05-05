@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react-dom';
 import PropTypes from 'prop-types';
 
 import SmallTemplate from '../../../layouts/templates/smallTemplate';
-import NoneIcon from '../../icons/none';
+import MemoryIcon from '../../icons/memory';
 
 function Info({value}) {
     let [isLoading, setLoading] = useState(true);
@@ -23,7 +23,7 @@ function Info({value}) {
         <SmallTemplate
             title={'Memory (used)'}
             value={displayValue}
-            icon={<NoneIcon />}
+            icon={<MemoryIcon />}
             isLoading={isLoading}
             className="bg-gradient-to-br from-yellow-300 to-red-400" />
 	);

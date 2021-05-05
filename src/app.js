@@ -10,13 +10,14 @@ import Greeting from './components/greeting';
 
 import CpuAvgLoad from './components/cpu/avgLoad';
 import MemoryInfo from './components/memory/info';
+import Uptime from './components/system/uptime';
 
 function App() {
 	const socket = io();
 
-	let [hostname, setHostname] = useState(null);
     let [cpuData, setCpuData] = useState(null);
 	let [memoryData, setMemoryData] = useState(null);
+    let [systemData, setSystemData] = useState(null);
 
 	useEffect(() => {
 		socket.on('cpuInfo', (data) => {
@@ -25,22 +26,25 @@ function App() {
 		socket.on('memoryInfo', (data) => {
 			setMemoryData(data);
         });
+		socket.on('systemInfo', (data) => {
+			setSystemData(data);
+        });
 
 		fetch('/api/system/info')
 			.then((res) => res.json())
 			.then(
-				(result) => setHostname(result.hostname),
-				() => {setHostname(null)}
+				(result) => setSystemData(result)
 			);
 	}, []);
 
     return (
         <Page appName={"Lizard Monitor"}>
-            <Greeting hostname={hostname} />
+            <Greeting hostname={systemData?.hostname} />
             <Grid>
                 <GridRow>
                     <CpuAvgLoad value={cpuData?.avgLoadPercent} />
                     <MemoryInfo value={memoryData?.usedPercent} />
+                    <Uptime value={systemData?.uptime} />
                 </GridRow>
             </Grid>
         </Page>
