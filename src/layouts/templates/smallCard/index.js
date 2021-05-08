@@ -1,7 +1,21 @@
 import React from 'react';
+import { useEffect, useState } from 'react-dom';
 import PropTypes from 'prop-types';
 
-function SmallTemplate({title, value, icon, isLoading, className}) {
+function SmallCard({title, value, icon, formatValueFunc, className}) {
+    let [isLoading, setLoading] = useState(true);
+    let [displayValue, setDisplayValue] = useState(null);
+
+    useEffect(() => {
+		if (value == undefined || value == null) {
+            setLoading(true);
+            setDisplayValue(null);
+        } else {
+            setLoading(false);
+            setDisplayValue(formatValueFunc(value));
+        }
+    }, [value]);
+
     return (
         <React.Fragment>
             {isLoading ? (
@@ -23,7 +37,7 @@ function SmallTemplate({title, value, icon, isLoading, className}) {
                         </div>
                         <div className="flex items-center space-x-4 px-4 h-16 max-h-16">
                             <h2 className="text-2xl font-semibold">
-                                {value}
+                                {displayValue}
                             </h2>
                         </div>
                     </div>
@@ -33,12 +47,12 @@ function SmallTemplate({title, value, icon, isLoading, className}) {
     );
 }
 
-SmallTemplate.propTypes = {
+SmallCard.propTypes = {
     title: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     icon: PropTypes.node.isRequired,
-    className: PropTypes.string,
-    isLoading: PropTypes.bool
+    formatValueFunc: PropTypes.func.isRequired,
+    className: PropTypes.string
 };
 
-export default SmallTemplate;
+export default SmallCard;

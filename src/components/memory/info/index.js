@@ -1,30 +1,21 @@
 import React from 'react';
-import { useEffect, useState } from 'react-dom';
 import PropTypes from 'prop-types';
 
-import SmallTemplate from '../../../layouts/templates/smallTemplate';
+import SmallCard from '../../../layouts/templates/smallCard';
 import MemoryIcon from '../../icons/memory';
 
 function Info({value}) {
-    let [isLoading, setLoading] = useState(true);
-    let [displayValue, setDisplayValue] = useState(null);
 
-    useEffect(() => {
-		if (value == undefined || value == null) {
-            setLoading(true);
-            setDisplayValue(null);
-        } else {
-            setLoading(false);
-            setDisplayValue(value + '%');
-        }
-    }, [value]);
+    const formatValueFunc = (value) => {
+        return value + '%';
+    };
 
 	return (
-        <SmallTemplate
+        <SmallCard
             title={'Memory (used)'}
-            value={displayValue}
+            value={value}
             icon={<MemoryIcon />}
-            isLoading={isLoading}
+            formatValueFunc={formatValueFunc}
             className="bg-gradient-to-br from-yellow-300 to-red-400" />
 	);
 }
