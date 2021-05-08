@@ -11,6 +11,7 @@ import Greeting from './components/greeting';
 import CpuAvgLoad from './components/cpu/avgLoad';
 import MemoryInfo from './components/memory/info';
 import MemoryDetails from './components/memory/details';
+import MemoryGraph from './components/memory/graph';
 import Uptime from './components/system/uptime';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 
     let [cpuData, setCpuData] = useState(null);
 	let [memoryData, setMemoryData] = useState(null);
+    let [memoryDataLastUpdated, setMemoryDataLastUpdated] = useState(null);
     let [systemData, setSystemData] = useState(null);
 
 	useEffect(() => {
@@ -26,6 +28,7 @@ function App() {
         });
 		socket.on('memoryInfo', (data) => {
 			setMemoryData(data);
+            setMemoryDataLastUpdated(new Date().getMilliseconds())
         });
 		socket.on('systemInfo', (data) => {
 			setSystemData(data);
@@ -49,6 +52,7 @@ function App() {
                 </GridRow>
                 <GridRow>
                     <MemoryDetails values={memoryData} />
+                    <MemoryGraph value={memoryData?.usedPercent} lastUpdated={memoryDataLastUpdated} />
                 </GridRow>
             </Grid>
         </Page>
