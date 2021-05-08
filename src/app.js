@@ -10,6 +10,7 @@ import Greeting from './components/greeting';
 
 import CpuAvgLoad from './components/cpu/avgLoad';
 import MemoryInfo from './components/memory/info';
+import MemoryDetails from './components/memory/details';
 import Uptime from './components/system/uptime';
 
 function App() {
@@ -45,6 +46,9 @@ function App() {
                     <CpuAvgLoad value={cpuData?.avgLoadPercent} />
                     <MemoryInfo value={memoryData?.usedPercent} />
                     <Uptime value={systemData?.uptime} />
+                </GridRow>
+                <GridRow>
+                    <MemoryDetails values={memoryData} />
                 </GridRow>
             </Grid>
         </Page>

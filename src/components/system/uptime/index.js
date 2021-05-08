@@ -29,7 +29,7 @@ function Uptime({value}) {
         <SmallCard
             title={'Uptime'}
             value={value}
-            icon={<ClockIcon />}
+            icon={ClockIcon}
             formatValueFunc={formatValueFunc}
             className="bg-gradient-to-br from-blue-300 to-indigo-400" />
 	);

@@ -14,7 +14,7 @@ function Info({value}) {
         <SmallCard
             title={'Memory (used)'}
             value={value}
-            icon={<MemoryIcon />}
+            icon={MemoryIcon}
             formatValueFunc={formatValueFunc}
             className="bg-gradient-to-br from-yellow-300 to-red-400" />
 	);
