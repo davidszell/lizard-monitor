@@ -1,30 +1,21 @@
 import React from 'react';
-import { useEffect, useState } from 'react-dom';
 import PropTypes from 'prop-types';
 
-import SmallTemplate from '../../../layouts/templates/smallTemplate';
+import SmallCard from '../../../layouts/templates/smallCard';
 import CpuIcon from '../../icons/cpu';
 
 function AvgLoad({value}) {
-    let [isLoading, setLoading] = useState(true);
-    let [displayValue, setDisplayValue] = useState(null);
 
-    useEffect(() => {
-		if (value == undefined || value == null) {
-            setLoading(true);
-            setDisplayValue(null);
-        } else {
-            setLoading(false);
-            setDisplayValue(value + '%');
-        }
-    }, [value]);
+    const formatValueFunc = (value) => {
+        return value + '%';
+    };
 
 	return (
-        <SmallTemplate
+        <SmallCard
             title={'CPU Load'}
-            value={displayValue}
+            value={value}
             icon={<CpuIcon />}
-            isLoading={isLoading}
+            formatValueFunc={formatValueFunc}
             className="bg-gradient-to-br from-green-300 to-blue-400" />
 	);
 }
