@@ -14,7 +14,7 @@ function AvgLoad({value}) {
         <SmallCard
             title={'CPU Load'}
             value={value}
-            icon={<CpuIcon />}
+            icon={CpuIcon}
             formatValueFunc={formatValueFunc}
             className="bg-gradient-to-br from-green-300 to-blue-400" />
 	);

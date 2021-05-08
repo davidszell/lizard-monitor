@@ -21,13 +21,13 @@ function SmallCard({title, value, icon, formatValueFunc, className}) {
             {isLoading ? (
                 <div className="relative shadow-md rounded-sm overflow-hidden max-h-32 h-32 text-white animate-pulse bg-gradient-to-br from-gray-300 to-gray-400">
                     <div className="absolute -bottom-8 -right-8 opacity-20">
-                        {icon}
+                        {icon('lg')}
                     </div>
                 </div>
             ) : (
                 <div className={"relative shadow rounded-sm overflow-hidden max-h-32 h-32 text-white " + (className ? className : "")}>
                     <div className="absolute -bottom-8 -right-8 opacity-20">
-                        {icon}
+                        {icon('lg')}
                     </div>
                     <div className="relative">
                         <div className="flex items-center px-4 h-12">
@@ -50,7 +50,7 @@ function SmallCard({title, value, icon, formatValueFunc, className}) {
 SmallCard.propTypes = {
     title: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
-    icon: PropTypes.node.isRequired,
+    icon: PropTypes.func.isRequired,
     formatValueFunc: PropTypes.func.isRequired,
     className: PropTypes.string
 };
