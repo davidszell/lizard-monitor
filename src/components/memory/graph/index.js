@@ -6,7 +6,7 @@ import MediumGraph from '../../../layouts/templates/mediumGraph';
 
 function Graph({value, lastUpdated}) {
 	return (
-        <MediumGraph title="Memory Usage (%)"
+        <MediumGraph title="Memory Usage"
             icon={MemoryIcon}
             lastValue={value}
             lastUpdated={lastUpdated}
