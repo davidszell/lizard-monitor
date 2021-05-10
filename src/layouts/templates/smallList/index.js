@@ -35,7 +35,7 @@ function SmallCard({title, values, icon, formatValuesFunc, className}) {
                                 {title}
                             </p>
                         </div>
-                        <div>
+                        <div className="bg-white">
                             {displayValues.map((displayValue,i) => (
                                 <div key={i}>
                                     <div className="flex items-end px-4 h-8">
