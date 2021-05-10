@@ -10,6 +10,7 @@ import Greeting from './components/greeting';
 
 import CpuAvgLoad from './components/cpu/avgLoad';
 import CpuGraph from './components/cpu/graph';
+import CpuCoreDetails from './components/cpu/coreDetails';
 import MemoryInfo from './components/memory/info';
 import MemoryDetails from './components/memory/details';
 import MemoryGraph from './components/memory/graph';
@@ -60,6 +61,9 @@ function App() {
                 </GridRow>
                 <GridRow>
                     <CpuGraph value={cpuData?.avgLoadPercent} lastUpdated={cpuDataLastUpdated} />
+                    <CpuCoreDetails values={cpuData} />
+                </GridRow>
+                <GridRow>
                     <SystemDetails values={systemData} />
                 </GridRow>
             </Grid>
