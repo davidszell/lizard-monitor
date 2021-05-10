@@ -13,7 +13,8 @@ import CpuGraph from './components/cpu/graph';
 import MemoryInfo from './components/memory/info';
 import MemoryDetails from './components/memory/details';
 import MemoryGraph from './components/memory/graph';
-import Uptime from './components/system/uptime';
+import SystemUptime from './components/system/uptime';
+import SystemDetails from './components/system/details';
 
 function App() {
 	const socket = io();
@@ -51,7 +52,7 @@ function App() {
                 <GridRow>
                     <CpuAvgLoad value={cpuData?.avgLoadPercent} />
                     <MemoryInfo value={memoryData?.usedPercent} />
-                    <Uptime value={systemData?.uptime} />
+                    <SystemUptime value={systemData?.uptime} />
                 </GridRow>
                 <GridRow>
                     <MemoryGraph value={memoryData?.usedPercent} lastUpdated={memoryDataLastUpdated} />
@@ -59,6 +60,7 @@ function App() {
                 </GridRow>
                 <GridRow>
                     <CpuGraph value={cpuData?.avgLoadPercent} lastUpdated={cpuDataLastUpdated} />
+                    <SystemDetails values={systemData} />
                 </GridRow>
             </Grid>
         </Page>
