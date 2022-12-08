@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/davidszell/lizard-monitor#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "express-rate-limit": "^5.2.6",
     "lizard-utils": "^1.2.0",
     "preact": "^10.5.13",
